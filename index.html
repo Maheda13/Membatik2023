@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" media="screen and (orientation: landscape)" />
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+
+      body {
+        font-family: "Fredoka", sans-serif;
+        background-color: #212a3e;
+        color: #ffffff;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      bg {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: -2;
+        transform: translate(-100%, -50%);
+      }
+      .penutup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        transform: translate(-100%, -50%);
+      }
+
+      m1 {
+        position: fixed; /* or absolute */
+        top: 19%;
+        left: 33%;
+      }
+      m2 {
+        position: fixed; /* or absolute */
+        top: 19%;
+        left: 57%;
+      }
+      m3 {
+        position: fixed; /* or absolute */
+        top: 44%;
+        left: 72%;
+      }
+      m4 {
+        position: fixed; /* or absolute */
+        top: 69%;
+        left: 52%;
+      }
+      m5 {
+        position: fixed; /* or absolute */
+        top: 69%;
+        left: 35%;
+      }
+      m6 {
+        position: fixed; /* or absolute */
+        top: 44%;
+        left: 21%;
+      }
+
+      button {
+        z-index: -1;
+        border: none;
+        cursor: pointer;
+        appearance: none;
+        background-color: inherit;
+        transition: transform 0.7s ease-in-out;
+        margin-left: 10px;
+      }
+      button:hover {
+        transform: scale(1.1) perspective(1px);
+      }
+      button1 {
+        border: none;
+        cursor: pointer;
+        appearance: none;
+        background-color: inherit;
+      }
+
+      /* Fullscreeen */
+      .toggle-fullscreen-btn {
+        position: fixed;
+        z-index: 10000;
+        top: 50%;
+        right: 50%;
+        border: 0;
+        padding: 0;
+        background: none;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .toggle-fullscreen-svg path {
+        transform-box: view-box;
+        transform-origin: 12px 12px;
+        fill: none;
+        stroke: black;
+        stroke-width: 4;
+        transition: 0.15s;
+      }
+
+      .toggle-fullscreen-btn:hover path:nth-child(1),
+      .toggle-fullscreen-btn:focus path:nth-child(1) {
+        transform: translate(-2px, -2px);
+      }
+
+      .toggle-fullscreen-btn:hover path:nth-child(2),
+      .toggle-fullscreen-btn:focus path:nth-child(2) {
+        transform: translate(2px, -2px);
+      }
+
+      .toggle-fullscreen-btn:hover path:nth-child(3),
+      .toggle-fullscreen-btn:focus path:nth-child(3) {
+        transform: translate(2px, 2px);
+      }
+
+      .toggle-fullscreen-btn:hover path:nth-child(4),
+      .toggle-fullscreen-btn:focus path:nth-child(4) {
+        transform: translate(-2px, 2px);
+      }
+    </style>
+    <title>DAFI Science Club</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+  </head>
+  <!--                      Body                        -->
+  <body style="background-image: url('images/home-bg.png')" ;>
+    <splash class="splash">
+      <p class="penutup">
+        <img width="200%" src="images/white-bg.png" />
+      </p>
+      <button
+        class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
+        aria-label="Enter fullscreen mode"
+        hidden
+      >
+        <svg
+          class="toggle-fullscreen-svg"
+          width="28"
+          height="28"
+          viewBox="-2 -2 28 28"
+        >
+          <g class="icon-fullscreen-enter">
+            <path d="M 2 9 v -7 h 7" />
+            <path d="M 22 9 v -7 h -7" />
+            <path d="M 22 15 v 7 h -7" />
+            <path d="M 2 15 v 7 h 7" />
+          </g>
+        </svg>
+      </button>
+      <bg>
+        <img width="200%" src="images/white-bg.png" />
+      </bg>
+      <iframe
+        class="video"
+        width="800px"
+        height="500px"
+        style="margin-top: 8%; margin-left: 19%"
+        src="https://www.youtube.com/embed/3WNH_wrf7LU"
+      >
+      </iframe>
+      <button1 class="lanjut" style="margin-left: 40%">
+        <img src="images/next.png" alt="lanjut" width="10%" />
+      </button1>
+    </splash>
+    <home class="homepage" hidden>
+      <m1>
+        <button>
+          <img src="images/tujuan.png" alt="btTujuan" height="100vh" />
+        </button>
+      </m1>
+      <m2>
+        <button>
+          <img src="images/materi.png" alt="btMateri" height="100vh" />
+        </button>
+      </m2>
+      <m3>
+        <button>
+          <img src="images/quiz.png" alt="btQuiz" height="100vh" /></button
+      ></m3>
+      <m4>
+        <button>
+          <img src="images/informasi.png" alt="btInformasi" height="100vh" />
+        </button>
+      </m4>
+      <m5>
+        <button>
+          <img src="images/instruksi.png" alt="btInstruksi" height="100vh" />
+        </button>
+      </m5>
+      <m6>
+        <button>
+          <img
+            src="images/simulasi.png"
+            alt="btSimulasi"
+            height="100vh"
+          /></button
+      ></m6>
+    </home>
+    <!--                   Script                       -->
+    <script>
+      feather.replace();
+
+      if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
+        const toggleBtn = document.querySelector(".js-toggle-fullscreen-btn");
+        const tutup = document.querySelector(".penutup");
+        const lanjut = document.querySelector(".lanjut");
+        const splash = document.querySelector(".splash");
+        const homepage = document.querySelector(".homepage");
+        toggleBtn.hidden = false;
+        lanjut.hidden = true;
+
+        toggleBtn.addEventListener("click", function () {
+          if (document.fullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitFullscreenElement) {
+            document.webkitCancelFullScreen();
+          } else if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+          } else {
+            document.documentElement.webkitRequestFullScreen();
+          }
+          tutup.hidden = true;
+          toggleBtn.hidden = true;
+          lanjut.hidden = false;
+        });
+
+        lanjut.addEventListener("click", function () {
+          homepage.hidden = false;
+          splash.hidden = true;
+          document.body.style.backgroundImage = "url('images/home-bg1.png')";
+        });
+      }
+    </script>
+  </body>
+</html>
