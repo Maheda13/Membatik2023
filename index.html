@@ -37,14 +37,14 @@
         top: 50%;
         left: 50%;
         z-index: -2;
-        transform: translate(-100%, -50%);
+        transform: translate(-50%, -50%);
       }
       .penutup {
         position: fixed;
         top: 50%;
         left: 50%;
         z-index: 10;
-        transform: translate(-100%, -50%);
+        transform: translate(-50%, -50%);
       }
 
       m1 {
@@ -146,10 +146,10 @@
     <link rel="icon" href="images/icon.png" type="image/x-icon" />
   </head>
   <!--                      Body                        -->
-  <body style="background-image: url('images/home-bg.png')" ;>
+  <body style="background-image: url('images/home-bg1.png')" ;>
     <splash class="splash">
       <p class="penutup">
-        <img width="200%" src="images/white-bg.png" />
+        <img width="1280rem" src="images/white-bg.png" />
       </p>
       <button
         class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
@@ -171,18 +171,18 @@
         </svg>
       </button>
       <bg>
-        <img width="200%" src="images/white-bg.png" />
+        <img width="1280rem" src="images/white-bg.png" />
       </bg>
       <iframe
-        class="video"
-        width="800px"
-        height="500px"
+        class="videobumper"
+        width="800rem"
+        height="500rem"
         style="margin-top: 8%; margin-left: 19%"
         src="https://www.youtube.com/embed/3WNH_wrf7LU"
       >
       </iframe>
-      <button1 class="lanjut" style="margin-left: 40%">
-        <img src="images/next.png" alt="lanjut" width="10%" />
+      <button1 class="lanjut" style="margin-left: 70%">
+        <img src="images/next.png" alt="lanjut" width="150rem" />
       </button1>
     </splash>
     <home class="homepage" hidden>
@@ -228,9 +228,11 @@
         const tutup = document.querySelector(".penutup");
         const lanjut = document.querySelector(".lanjut");
         const splash = document.querySelector(".splash");
+        const bumper = document.querySelector(".videobumper");
         const homepage = document.querySelector(".homepage");
         toggleBtn.hidden = false;
         lanjut.hidden = true;
+        bumper.hidden = true;
 
         toggleBtn.addEventListener("click", function () {
           if (document.fullscreen) {
@@ -242,9 +244,11 @@
           } else {
             document.documentElement.webkitRequestFullScreen();
           }
+          screen.orientation.lock("landscape-primary");
           tutup.hidden = true;
           toggleBtn.hidden = true;
           lanjut.hidden = false;
+          bumper.hidden = false;
         });
 
         lanjut.addEventListener("click", function () {
