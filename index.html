@@ -109,7 +109,7 @@
       }
 
       .planet {
-        height: 6rem;
+        height: 5rem;
       }
       /* Fullscreeen */
       .toggle-fullscreen-btn {
@@ -158,13 +158,13 @@
   </head>
   <!--                      Body                        -->
   <body style="background-image: url('images/home-bg1.png')" ;>
-    <bg>
+    <bg class="bgsplash">
       <img width="200%" src="images/white-bg.png" />
     </bg>
     <splash class="splash" style="width: 100%; height: 100%">
       <p
         class="penutup"
-        style="background-color: aliceblue; width: 100%; height: 100%"
+        style="background-color: blue; width: 100%; height: 100%"
       ></p>
       <button
         class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
@@ -232,15 +232,15 @@
     </home>
     <!--                   Script                       -->
     <script>
-      feather.replace();
+      const toggleBtn = document.querySelector(".js-toggle-fullscreen-btn");
+      const tutup = document.querySelector(".penutup");
+      const lanjut = document.querySelector(".lanjut");
+      const splash = document.querySelector(".splash");
+      const bgsplash = document.querySelector(".bgsplash");
+      const bumper = document.querySelector(".videobumper");
+      const homepage = document.querySelector(".homepage");
 
       if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
-        const toggleBtn = document.querySelector(".js-toggle-fullscreen-btn");
-        const tutup = document.querySelector(".penutup");
-        const lanjut = document.querySelector(".lanjut");
-        const splash = document.querySelector(".splash");
-        const bumper = document.querySelector(".videobumper");
-        const homepage = document.querySelector(".homepage");
         toggleBtn.hidden = false;
         lanjut.hidden = true;
         bumper.hidden = true;
@@ -262,9 +262,23 @@
           bumper.hidden = false;
         });
 
+        function handleFullscreen() {
+          if (document.fullscreen || document.webkitFullscreenElement) {
+            tutup.hidden = true;
+            toggleBtn.hidden = true;
+          } else {
+            tutup.hidden = false;
+            toggleBtn.hidden = false;
+          }
+        }
+
         lanjut.addEventListener("click", function () {
           homepage.hidden = false;
           splash.hidden = true;
+          bgsplash.hidden = true;
+          var myPlayer = document.querySelector(".videobumper");
+          myPlayer.setAttribute("src", " ");
+
           document.body.style.backgroundImage = "url('images/home-bg1.png')";
         });
       }
