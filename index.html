@@ -148,8 +148,8 @@
   <!--                      Body                        -->
   <body style="background-image: url('images/home-bg1.png')" ;>
     <splash class="splash">
-      <p class="penutup">
-        <img width="1280rem" src="images/white-bg.png" />
+      <p class="penutup" style="width: vw; height:vh;background-color:red"; >
+        <!-- <img width="1280rem" src="images/white-bg.png" /> -->
       </p>
       <button
         class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
@@ -221,8 +221,6 @@
     </home>
     <!--                   Script                       -->
     <script>
-      feather.replace();
-
       if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
         const toggleBtn = document.querySelector(".js-toggle-fullscreen-btn");
         const tutup = document.querySelector(".penutup");
