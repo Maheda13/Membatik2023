@@ -46,12 +46,6 @@
         z-index: 10;
         transform: translate(-50%, -50%);
       }
-            .videobumper {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -55%);
-      }
 
       m1 {
         position: fixed; /* or absolute */
@@ -154,8 +148,10 @@
   <!--                      Body                        -->
   <body style="background-image: url('images/home-bg.png')" ;>
     <splash class="splash">
-      <p class="penutup" style="width: 100%; height:100%;background-color:red"; >
-      </p>
+      <p
+        class="penutup"
+        style="background-color: aliceblue; width: 100%; height: 100%"
+      ></p>
       <button
         class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
         aria-label="Enter fullscreen mode"
@@ -176,16 +172,17 @@
         </svg>
       </button>
       <bg>
-        <img width="200%" src="images/white-bg.png" />
+        <img width="1280rem" src="images/white-bg.png" />
       </bg>
       <iframe
         class="videobumper"
-        width="60%"         
-        height="75%"
+        width="800rem"
+        height="500rem"
+        style="margin-top: 8%; margin-left: 19%"
         src="https://www.youtube.com/embed/3WNH_wrf7LU"
       >
       </iframe>
-      <button1 class="lanjut" style="margin-left: 70%;margin-top:80%">
+      <button1 class="lanjut" style="margin-left: 70%">
         <img src="images/next.png" alt="lanjut" width="150rem" />
       </button1>
     </splash>
@@ -225,6 +222,8 @@
     </home>
     <!--                   Script                       -->
     <script>
+      feather.replace();
+
       if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
         const toggleBtn = document.querySelector(".js-toggle-fullscreen-btn");
         const tutup = document.querySelector(".penutup");
