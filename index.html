@@ -70,7 +70,7 @@
       m4 {
         position: fixed; /* or absolute */
         top: 69vh;
-        left: 52vw;
+        left: 54vw;
       }
       m5 {
         position: fixed; /* or absolute */
@@ -81,6 +81,28 @@
         position: fixed; /* or absolute */
         top: 44vh;
         left: 21vw;
+      }
+
+      .pHome {
+        position: fixed; /* or absolute */
+        top: 14vh;
+        left: 84vw;
+      }
+      .pBackM {
+        position: fixed; /* or absolute */
+        top: 14vh;
+        left: 77vw;
+      }
+
+      Bumi {
+        position: fixed; /* or absolute */
+        top: 35vh;
+        left: 30vw;
+      }
+      Bulan {
+        position: fixed; /* or absolute */
+        top: 33vh;
+        left: 57vw;
       }
 
       .lanjut {
@@ -161,10 +183,18 @@
     <bg class="bgsplash">
       <img width="200%" src="images/white-bg.png" />
     </bg>
+    <navigasi>
+      <button class="pHome">
+        <img class="Homeee" width="69%" src="images/btHOme.png" />
+      </button>
+      <button class="pBack">
+        <img class="Homeee" width="69%" src="images/btReturn.png" />
+      </button>
+    </navigasi>
     <splash class="splash" style="width: 100%; height: 100%">
       <p
         class="penutup"
-        style="background-color: red; width: 100%; height: 100%"
+        style="background-color: aliceblue; width: 100%; height: 100%"
       ></p>
       <button
         class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
@@ -196,40 +226,111 @@
         <img src="images/next.png" alt="lanjut" width="100%" />
       </button1>
     </splash>
-    <home class="homepage" hidden>
+    <home class="homepage">
       <m1>
-        <button>
-          <img class="planet" src="images/tujuan.png" alt="btTujuan" />
+        <button class="pTujuan">
+          <img
+            id="idTujuan"
+            class="planet"
+            src="images/tujuan.png"
+            alt="btTujuan"
+          />
         </button>
       </m1>
       <m2>
-        <button>
-          <img class="planet" src="images/materi.png" alt="btMateri" />
+        <button class="pMateri">
+          <img
+            id="idMateri"
+            class="planet"
+            src="images/materi.png"
+            alt="btMateri"
+          />
         </button>
       </m2>
       <m3>
-        <button>
-          <img class="planet" src="images/quiz.png" alt="btQuiz" /></button
+        <button class="pQuiz">
+          <img
+            id="idQuiz"
+            class="planet"
+            src="images/quiz.png"
+            alt="btQuiz"
+          /></button
       ></m3>
       <m4>
-        <button>
-          <img class="planet" src="images/informasi.png" alt="btInformasi" />
+        <button class="pInformasi">
+          <img
+            id="idInformasi"
+            class="planet"
+            src="images/informasi.png"
+            alt="btInformasi"
+          />
         </button>
       </m4>
       <m5>
-        <button>
-          <img class="planet" src="images/instruksi.png" alt="btInstruksi" />
+        <button class="pPetunjuk">
+          <img
+            id="idInstruksi"
+            class="planet"
+            src="images/instruksi.png"
+            alt="btInstruksi"
+          />
         </button>
       </m5>
       <m6>
-        <button>
+        <button class="pSimulasi">
           <img
+            id="idSimulasi"
             class="planet"
             src="images/simulasi.png"
             alt="btSimulasi"
           /></button
       ></m6>
     </home>
+    <tujuan class="tujuanpage"> </tujuan>
+    <materi class="materipage">
+      <bumi>
+        <button class="pBumi">
+          <img
+            id="idBumi"
+            height="220rem"
+            src="images/Earth.png"
+            alt="btBumi"
+          /></button
+      ></bumi>
+      <bulan>
+        <button class="pBulan">
+          <img
+            id="idBulan"
+            height="50rem"
+            src="images/moon.png"
+            alt="btBulan"
+          /></button
+      ></bulan>
+    </materi>
+    <quiz class="quizpage"> </quiz>
+    <simulasi class="simulasipage">
+      <p class="simulasiMoon" width="50%" height="50%">
+        <object
+          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+          width="630"
+          height="510"
+        >
+          <param name="movie" value="lunarapplet.swf" />
+          <!--[if !IE]>--><object
+            type="application/x-shockwave-flash"
+            data="lunarapplet.swf"
+            width="630"
+            height="510"
+          >
+            <!--<![endif]-->
+            <p>flash animation</p>
+            <!--[if !IE]>--></object
+          ><!--<![endif]-->
+        </object>
+      </p>
+    </simulasi>
+    <informasi class="informasipage"> </informasi>
+    <petunjuk class="petunjukpage"></petunjuk>
     <!--                   Script                       -->
     <script>
       const toggleBtn = document.querySelector(".js-toggle-fullscreen-btn");
@@ -242,7 +343,36 @@
       const bumper = document.querySelector(".videobumper");
 
       const homepage = document.querySelector(".homepage");
+      const tujuanpage = document.querySelector(".tujuanpage");
+      const materipage = document.querySelector(".materipage");
+      const quizpage = document.querySelector(".quizpage");
+      const simulasipage = document.querySelector(".simulasipage");
+      const petunjukpage = document.querySelector(".petunjukpage");
+      const informasipage = document.querySelector(".informasipage");
 
+      // hidden all pages
+      homepage.hidden = true;
+      tujuanpage.hidden = true;
+      materipage.hidden = true;
+      quizpage.hidden = true;
+      simulasipage.hidden = true;
+      petunjukpage.hidden = true;
+      informasipage.hidden = true;
+
+      const homebt = document.querySelector(".pHome");
+      homebt.hidden = true;
+      const backbt = document.querySelector(".pBackM");
+      backbt.hidden = true;
+      var posisi = 0;
+
+      const tujuanbt = document.querySelector(".pTujuan");
+      const simulasibt = document.querySelector(".pSimulasi");
+      const materibt = document.querySelector(".pMateri");
+      const quizbt = document.querySelector(".pQuiz");
+      const informasibt = document.querySelector(".pInformasi");
+      const petunjukbt = document.querySelector(".pPetunjuk");
+
+      // Fullscreen
       if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
         styleEl.setAttribute("rel", "stylesheet");
         styleEl.setAttribute(
@@ -294,6 +424,75 @@
           myPlayer.setAttribute("src", " ");
 
           document.body.style.backgroundImage = "url('images/home-bg1.png')";
+        });
+
+        // navigasi menu
+        homebt.addEventListener("click", function () {
+          homepage.hidden = false;
+          tujuanpage.hidden = true;
+          materipage.hidden = true;
+          quizpage.hidden = true;
+          simulasipage.hidden = true;
+          petunjukpage.hidden = true;
+          informasipage.hidden = true;
+
+          homebt.hidden = true;
+          document.body.style.backgroundImage = "url('images/home-bg1.png')";
+        });
+        backbt.addEventListener("click", function () {
+          materipage.hidden = false;
+          backbtM.hidden = true;
+          bumibt.hidden = false;
+          bulanbt.hidden = false;
+          document.body.style.backgroundImage = "url('images/pageMateri.png')";
+
+          // if posisi ayok ayok
+        });
+
+        tujuanbt.addEventListener("click", function () {
+          homepage.hidden = true;
+          tujuanpage.hidden = false;
+          homebt.hidden = false;
+          document.body.style.backgroundImage = "url('images/pageTujuan.png')";
+        });
+        materibt.addEventListener("click", function () {
+          homepage.hidden = true;
+          materipage.hidden = false;
+          backbtM.hidden = true;
+
+          bumibt.hidden = false;
+          bulanbt.hidden = false;
+          homebt.hidden = false;
+          document.body.style.backgroundImage = "url('images/pageMateri.png')";
+        });
+        quizbt.addEventListener("click", function () {
+          homepage.hidden = true;
+          quizpage.hidden = false;
+          document.body.style.backgroundImage = "url('images/pageSimulasi')";
+        });
+        simulasibt.addEventListener("click", function () {
+          homepage.hidden = true;
+          simulasipage.hidden = false;
+          document.body.style.backgroundImage = "url('images/pageMateri.png')";
+        });
+
+        // Navigasi Materi'
+        const bumibt = document.querySelector(".pBumi");
+        const bulanbt = document.querySelector(".pBulan");
+
+        bumibt.addEventListener("click", function () {
+          bumibt.hidden = true;
+          bulanbt.hidden = true;
+          backbtM.hidden = false;
+
+          document.body.style.backgroundImage = "url('images/pageMateri1.png')";
+        });
+        bulanbt.addEventListener("click", function () {
+          bumibt.hidden = true;
+          bulanbt.hidden = true;
+          backbtM.hidden = false;
+
+          document.body.style.backgroundImage = "url('images/pageMateri2.png')";
         });
       }
     </script>
