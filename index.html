@@ -131,6 +131,13 @@
       .cBulan {
         max-height: 3rem;
       }
+
+      .cSim1 {
+        max-height: 12rem;
+      }
+      .cSim2 {
+        max-height: 12rem;
+      }
       .cStart {
         max-height: 3rem;
       }
@@ -385,25 +392,24 @@
       </quiziz>
     </quiz>
     <simulasi class="simulasipage">
-      <p class="simulasiMoon" width="50%" height="50%">
-        <object
-          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-          width="630"
-          height="510"
-        >
-          <param name="movie" value="lunarapplet.swf" />
-          <!--[if !IE]>--><object
-            type="application/x-shockwave-flash"
-            data="lunarapplet.swf"
-            width="630"
-            height="510"
-          >
-            <!--<![endif]-->
-            <p>flash animation</p>
-            <!--[if !IE]>--></object
-          ><!--<![endif]-->
-        </object>
-      </p>
+      <simulasi1 style="position: fixed; top: 35vh; left: 28vw">
+        <button class="pSim1">
+          <img
+            class="cSim1"
+            id="idSim1"
+            src="images/btSimulasi1.png"
+            alt="btSim1"
+          /></button
+      ></simulasi1>
+      <simulasi2 style="position: fixed; top: 47vh; left: 50vw">
+        <button class="psim2">
+          <img
+            class="cSim2"
+            id="idSim2"
+            src="images/btSimulasi2.png"
+            alt="btSim2"
+          /></button
+      ></simulasi2>
     </simulasi>
     <informasi class="informasipage"> </informasi>
     <petunjuk class="petunjukpage"></petunjuk>
