@@ -122,6 +122,19 @@
       .planet {
         max-height: 5rem;
       }
+      .mButton {
+        max-height: 3rem;
+      }
+      .cBumi {
+        max-height: 10rem;
+      }
+      .cBulan {
+        max-height: 3rem;
+      }
+      .cStart {
+        max-height: 3rem;
+      }
+
       /* Fullscreeen */
       .toggle-fullscreen-btn {
         position: fixed;
@@ -180,7 +193,7 @@
         <img class="Homeee" width="69%" src="images/btReturn.png" />
       </button>
     </navigasi>
-    <splash class="splash" style="width: 100%; height: 100%">
+    <splash class="splash" style="max-width: 100%; max-height: 100%">
       <p
         class="penutup"
         style="background-color: whitesmoke; width: 100%; height: 100%"
@@ -284,8 +297,9 @@
       <bumi style="position: fixed; top: 35vh; left: 30vw">
         <button class="pBumi">
           <img
+            class="cBumi"
             id="idBumi"
-            height="220rem"
+            max-height="10rem"
             src="images/Earth.png"
             alt="btBumi"
           /></button
@@ -295,24 +309,25 @@
         style="position: fixed; top: 45vh; left: 45vw; text-align: center"
       >
         <button class="pBumi1">
-          <img height="50rem" src="images/btM11.png" />
+          <img class="mButton" src="images/btM11.png" />
         </button>
         <br />
         <br />
         <button class="pBumi2">
-          <img height="50rem" src="images/btM12.png" />
+          <img class="mButton" src="images/btM12.png" />
         </button>
         <br />
         <br />
         <button class="pBumi3">
-          <img height="50rem" src="images/btM13.png" />
+          <img class="mButton" src="images/btM13.png" />
         </button>
       </menubumi>
       <bulan style="position: fixed; top: 33vh; left: 57vw">
         <button class="pBulan">
           <img
+            class="cBulan"
             id="idBulan"
-            height="50rem"
+            max-height="2rem"
             src="images/moon.png"
             alt="btBulan"
           /></button
@@ -322,17 +337,17 @@
         style="position: fixed; top: 45vh; left: 45vw; text-align: center"
       >
         <button class="pBulan1">
-          <img height="50rem" src="images/btM21.png" />
+          <img class="mButton" src="images/btM21.png" />
         </button>
         <br />
         <br />
         <button class="pBulan2">
-          <img height="50rem" src="images/btM22.png" />
+          <img class="mButton" src="images/btM22.png" />
         </button>
         <br />
         <br />
         <button class="pBulan3">
-          <img height="50rem" src="images/btM23.png" />
+          <img class="mButton" src="images/btM23.png" />
         </button>
       </menubulan>
     </materi>
@@ -340,29 +355,23 @@
       <start
         style="
           position: fixed;
-          top: 50%;
-          left: 50%;
-          z-index: 10;
+          top: 50vh;
+          left: 50vw;
           transform: translate(-50%, -50%);
         "
       >
-        <button>
-          <img
-            class="pQuiz1"
-            height="350rem"
-            src="images/btStart.png"
-          /></button
+        <button class="pQuiz1">
+          <img class="mButton" src="images/btStart.png" /></button
       ></start>
-      <quiziz class="layarQuiz">
+      <quiziz class="layarQuiz" style="z-index: -100">
         <div
           style="
-            z-index: -1000;
-            margin-top: 7.5%;
+            margin-top: 7%;
             margin-left: 10%;
             width: 65%;
             display: flex;
-            flex-direction: column;
-            min-height: 635px;
+            min-height: 75vh;
+            max-height: 75vh;
           "
         >
           <iframe
@@ -370,7 +379,6 @@
             title="Earth and Moon Quiz - Quizizz"
             style="flex: 1"
             frameborder="0"
-            allowfullscreen
           ></iframe
           ><a></a>
         </div>
@@ -538,6 +546,7 @@
             bumibt.hidden = false;
             bulanbt.hidden = false;
             backbt.hidden = true;
+            mbumi.hidden = true;
             mbulan.hidden = true;
             document.body.style.backgroundImage =
               "url('images/pageMateri.png')";
@@ -546,13 +555,13 @@
             mbumi.hidden = false;
             document.body.style.backgroundImage =
               "url('images/pageMateri1.png')";
-            posisi = "bumi";
+            posisi = "pmateri";
           }
           if (posisi == "pbulan") {
             mbulan.hidden = false;
             document.body.style.backgroundImage =
               "url('images/pageMateri2.png')";
-            posisi = "bulan";
+            posisi = "pmateri";
           }
           if (posisi == "pquiz1") {
             startbt.hidden = false;
@@ -674,6 +683,7 @@
         startbt.addEventListener("click", function () {
           posisi = "pquiz1";
           startbt.hidden = true;
+          homebt.hidden = false;
           backbt.hidden = false;
           fquiz.hidden = false;
 
