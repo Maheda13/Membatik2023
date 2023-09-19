@@ -5,15 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" media="screen and (orientation: landscape)" />
 
-    <script src="https://unpkg.com/feather-icons"></script>
     <style>
       * {
         margin: 0;
@@ -32,6 +24,7 @@
         background-attachment: fixed;
         background-size: cover;
       }
+
       bg {
         position: fixed;
         top: 50%;
@@ -92,17 +85,6 @@
         position: fixed; /* or absolute */
         top: 14vh;
         left: 77vw;
-      }
-
-      Bumi {
-        position: fixed; /* or absolute */
-        top: 35vh;
-        left: 30vw;
-      }
-      Bulan {
-        position: fixed; /* or absolute */
-        top: 33vh;
-        left: 57vw;
       }
 
       .lanjut {
@@ -194,7 +176,7 @@
     <splash class="splash" style="width: 100%; height: 100%">
       <p
         class="penutup"
-        style="background-color: blue; width: 100%; height: 100%"
+        style="background-color: whitesmoke; width: 100%; height: 100%"
       ></p>
       <button
         class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
@@ -288,7 +270,7 @@
     </home>
     <tujuan class="tujuanpage"> </tujuan>
     <materi class="materipage">
-      <bumi>
+      <bumi style="position: fixed; top: 35vh; left: 30vw">
         <button class="pBumi">
           <img
             id="idBumi"
@@ -297,7 +279,25 @@
             alt="btBumi"
           /></button
       ></bumi>
-      <bulan>
+      <menubumi
+        class="bumimenu"
+        style="position: fixed; top: 45vh; left: 45vw; text-align: center"
+      >
+        <button class="pBumi1">
+          <img height="50rem" src="images/btM11.png" />
+        </button>
+        <br />
+        <br />
+        <button class="pBumi2">
+          <img height="50rem" src="images/btM12.png" />
+        </button>
+        <br />
+        <br />
+        <button class="pBumi3">
+          <img height="50rem" src="images/btM13.png" />
+        </button>
+      </menubumi>
+      <bulan style="position: fixed; top: 33vh; left: 57vw">
         <button class="pBulan">
           <img
             id="idBulan"
@@ -306,6 +306,24 @@
             alt="btBulan"
           /></button
       ></bulan>
+      <menubulan
+        class="bulanmenu"
+        style="position: fixed; top: 45vh; left: 45vw; text-align: center"
+      >
+        <button class="pBulan1">
+          <img height="50rem" src="images/btM21.png" />
+        </button>
+        <br />
+        <br />
+        <button class="pBulan2">
+          <img height="50rem" src="images/btM22.png" />
+        </button>
+        <br />
+        <br />
+        <button class="pBulan3">
+          <img height="50rem" src="images/btM23.png" />
+        </button>
+      </menubulan>
     </materi>
     <quiz class="quizpage"> </quiz>
     <simulasi class="simulasipage">
@@ -359,11 +377,22 @@
       petunjukpage.hidden = true;
       informasipage.hidden = true;
 
+      const bumibt = document.querySelector(".pBumi");
+      const mbumi = document.querySelector(".bumimenu");
+      const bumi1bt = document.querySelector(".pBumi1");
+      const bumi2bt = document.querySelector(".pBumi2");
+      const bumi3bt = document.querySelector(".pBumi3");
+      const bulanbt = document.querySelector(".pBulan");
+      const mbulan = document.querySelector(".bulanmenu");
+      const bulan1bt = document.querySelector(".pBulan1");
+      const bulan2bt = document.querySelector(".pBulan2");
+      const bulan3bt = document.querySelector(".pBulan3");
+
       const homebt = document.querySelector(".pHome");
       homebt.hidden = true;
       const backbt = document.querySelector(".pBack");
       backbt.hidden = true;
-      // var posisi = 0;
+      var posisi;
 
       const tujuanbt = document.querySelector(".pTujuan");
       const simulasibt = document.querySelector(".pSimulasi");
@@ -437,16 +466,33 @@
           informasipage.hidden = true;
 
           homebt.hidden = true;
+          backbt.hidden = true;
           document.body.style.backgroundImage = "url('images/home-bg1.png')";
         });
         backbt.addEventListener("click", function () {
           materipage.hidden = false;
-          backbt.hidden = true;
-          bumibt.hidden = false;
-          bulanbt.hidden = false;
-          document.body.style.backgroundImage = "url('images/pageMateri.png')";
 
           // if posisi ayok ayok
+          if (posisi == "pmateri") {
+            bumibt.hidden = false;
+            bulanbt.hidden = false;
+            backbt.hidden = true;
+            mbulan.hidden = true;
+            document.body.style.backgroundImage =
+              "url('images/pageMateri.png')";
+          }
+          if (posisi == "pbumi") {
+            mbumi.hidden = false;
+            document.body.style.backgroundImage =
+              "url('images/pageMateri1.png')";
+            posisi = "bumi";
+          }
+          if (posisi == "pbulan") {
+            mbulan.hidden = false;
+            document.body.style.backgroundImage =
+              "url('images/pageMateri2.png')";
+            posisi = "bulan";
+          }
         });
 
         tujuanbt.addEventListener("click", function () {
@@ -459,10 +505,13 @@
           homepage.hidden = true;
           materipage.hidden = false;
           backbt.hidden = true;
+          homebt.hidden = false;
 
           bumibt.hidden = false;
+          mbumi.hidden = true;
+
           bulanbt.hidden = false;
-          homebt.hidden = false;
+          mbulan.hidden = true;
           document.body.style.backgroundImage = "url('images/pageMateri.png')";
         });
         quizbt.addEventListener("click", function () {
@@ -477,22 +526,60 @@
         });
 
         // Navigasi Materi'
-        const bumibt = document.querySelector(".pBumi");
-        const bulanbt = document.querySelector(".pBulan");
-
         bumibt.addEventListener("click", function () {
+          posisi = "pmateri";
           bumibt.hidden = true;
           bulanbt.hidden = true;
           backbt.hidden = false;
 
+          mbumi.hidden = false;
           document.body.style.backgroundImage = "url('images/pageMateri1.png')";
         });
+        bumi1bt.addEventListener("click", function () {
+          posisi = "pbumi";
+          mbumi.hidden = true;
+
+          document.body.style.backgroundImage = "url('images/pE11.png')";
+        });
+        bumi2bt.addEventListener("click", function () {
+          posisi = "pbumi";
+          mbumi.hidden = true;
+
+          document.body.style.backgroundImage = "url('images/pE2.png')";
+        });
+        bumi3bt.addEventListener("click", function () {
+          posisi = "pbumi";
+          mbumi.hidden = true;
+
+          document.body.style.backgroundImage = "url('images/pE31.png')";
+        });
+
         bulanbt.addEventListener("click", function () {
+          posisi = "pmateri";
           bumibt.hidden = true;
           bulanbt.hidden = true;
           backbt.hidden = false;
+          mbulan.hidden = false;
 
           document.body.style.backgroundImage = "url('images/pageMateri2.png')";
+        });
+        bulan1bt.addEventListener("click", function () {
+          posisi = "pbulan";
+          mbulan.hidden = true;
+
+          document.body.style.backgroundImage = "url('images/pM1.png')";
+        });
+        bulan2bt.addEventListener("click", function () {
+          posisi = "pbulan";
+          mbulan.hidden = true;
+
+          document.body.style.backgroundImage = "url('images/pM2.png')";
+        });
+        bulan3bt.addEventListener("click", function () {
+          posisi = "pbulan";
+          mbulan.hidden = true;
+
+          document.body.style.backgroundImage = "url('images/pM3.png')";
         });
       }
     </script>
