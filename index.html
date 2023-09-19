@@ -32,6 +32,13 @@
         z-index: -2;
         transform: translate(-100%, -50%);
       }
+      .btnopen {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        transform: translate(-50%, -50%);
+      }
       .penutup {
         position: fixed;
         top: 50%;
@@ -157,7 +164,7 @@
         transform: translate(-2px, 2px);
       }
     </style>
-    <title>DAFI Science Club</title>
+    <title>DAFI Science Class</title>
     <link rel="icon" href="images/icon.png" type="image/x-icon" />
   </head>
   <!--                      Body                        -->
@@ -178,7 +185,11 @@
         class="penutup"
         style="background-color: whitesmoke; width: 100%; height: 100%"
       ></p>
-      <button
+      <logo class="btnopen">
+        <button class="js-toggle-fullscreen-btn toggle-fullscreen-btn">
+          <img height="150rem" src="images/openinglogo.png" /></button
+      ></logo>
+      <!-- <button
         class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
         aria-label="Enter fullscreen mode"
         hidden
@@ -196,7 +207,7 @@
             <path d="M 2 15 v 7 h 7" />
           </g>
         </svg>
-      </button>
+      </button> -->
       <iframe
         class="videobumper"
         width="60%"
@@ -325,7 +336,46 @@
         </button>
       </menubulan>
     </materi>
-    <quiz class="quizpage"> </quiz>
+    <quiz class="quizpage">
+      <start
+        style="
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          z-index: 10;
+          transform: translate(-50%, -50%);
+        "
+      >
+        <button>
+          <img
+            class="pQuiz1"
+            height="350rem"
+            src="images/btStart.png"
+          /></button
+      ></start>
+      <quiziz class="layarQuiz">
+        <div
+          style="
+            z-index: -1000;
+            margin-top: 7.5%;
+            margin-left: 10%;
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            min-height: 635px;
+          "
+        >
+          <iframe
+            src="https://quizizz.com/embed/quiz/6505ef23598d1f1610c694a5"
+            title="Earth and Moon Quiz - Quizizz"
+            style="flex: 1"
+            frameborder="0"
+            allowfullscreen
+          ></iframe
+          ><a></a>
+        </div>
+      </quiziz>
+    </quiz>
     <simulasi class="simulasipage">
       <p class="simulasiMoon" width="50%" height="50%">
         <object
@@ -387,6 +437,16 @@
       const bulan1bt = document.querySelector(".pBulan1");
       const bulan2bt = document.querySelector(".pBulan2");
       const bulan3bt = document.querySelector(".pBulan3");
+
+      const startbt = document.querySelector(".pQuiz1");
+      const fquiz = document.querySelector(".layarQuiz");
+
+      mbumi.hidden = true;
+      mbulan.hidden = true;
+      bumibt.hidden = true;
+      bulanbt.hidden = true;
+      startbt.hidden = true;
+      fquiz.hidden = true;
 
       const homebt = document.querySelector(".pHome");
       homebt.hidden = true;
@@ -467,6 +527,7 @@
 
           homebt.hidden = true;
           backbt.hidden = true;
+
           document.body.style.backgroundImage = "url('images/home-bg1.png')";
         });
         backbt.addEventListener("click", function () {
@@ -493,6 +554,11 @@
               "url('images/pageMateri2.png')";
             posisi = "bulan";
           }
+          if (posisi == "pquiz1") {
+            startbt.hidden = false;
+            backbt.hidden = true;
+            document.body.style.backgroundImage = "url('images/pageQuiz.png')";
+          }
         });
 
         tujuanbt.addEventListener("click", function () {
@@ -517,12 +583,34 @@
         quizbt.addEventListener("click", function () {
           homepage.hidden = true;
           quizpage.hidden = false;
-          document.body.style.backgroundImage = "url('images/pageSimulasi')";
+          homebt.hidden = false;
+          startbt.hidden = false;
+
+          document.body.style.backgroundImage = "url('images/pageQuiz.png')";
         });
         simulasibt.addEventListener("click", function () {
           homepage.hidden = true;
           simulasipage.hidden = false;
-          document.body.style.backgroundImage = "url('images/pageMateri.png')";
+          homebt.hidden = false;
+
+          document.body.style.backgroundImage =
+            "url('images/pageSimulasi.png')";
+        });
+        petunjukbt.addEventListener("click", function () {
+          homepage.hidden = true;
+          petunjukpage.hidden = false;
+          homebt.hidden = false;
+
+          document.body.style.backgroundImage =
+            "url('images/pagePetunjuk.png')";
+        });
+        informasibt.addEventListener("click", function () {
+          homepage.hidden = true;
+          informasipage.hidden = false;
+          homebt.hidden = false;
+
+          document.body.style.backgroundImage =
+            "url('images/pageInformasi.png')";
         });
 
         // Navigasi Materi'
@@ -580,6 +668,16 @@
           mbulan.hidden = true;
 
           document.body.style.backgroundImage = "url('images/pM3.png')";
+        });
+
+        //Navigasi quiz
+        startbt.addEventListener("click", function () {
+          posisi = "pquiz1";
+          startbt.hidden = true;
+          backbt.hidden = false;
+          fquiz.hidden = false;
+
+          document.body.style.backgroundImage = "url('images/pageQuiz1.png')";
         });
       }
     </script>
