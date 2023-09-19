@@ -34,7 +34,7 @@
       }
       .btnopen {
         position: fixed;
-        top: 50%;
+        top: 40%;
         left: 50%;
         z-index: 10;
         transform: translate(-50%, -50%);
@@ -94,6 +94,18 @@
         left: 77vw;
       }
 
+      navR {
+        position: fixed; /* or absolute */
+        top: 50%;
+        left: 94%;
+        transform: translate(-50%, -50%);
+      }
+      navL {
+        position: fixed; /* or absolute */
+        top: 50%;
+        left: 5%;
+        transform: translate(-50%, -50%);
+      }
       .lanjut {
         position: fixed; /* or absolute */
         top: 80%;
@@ -121,6 +133,9 @@
 
       .planet {
         max-height: 5rem;
+      }
+      .cNav {
+        max-height: 4rem;
       }
       .mButton {
         max-height: 3rem;
@@ -194,11 +209,19 @@
     </bg>
     <navigasi>
       <button class="pHome">
-        <img class="Homeee" width="69%" src="images/btHOme.png" />
+        <img class="cNav" src="images/btHOme.png" />
       </button>
       <button class="pBack">
-        <img class="Homeee" width="69%" src="images/btReturn.png" />
+        <img class="cNav" src="images/btReturn.png" />
       </button>
+      <navR>
+        <button class="pRight">
+          <img class="cNav" src="images/btRight.png" /></button
+      ></navR>
+      <navL>
+        <button class="pLeft">
+          <img class="cNav" src="images/btLeft.png" /></button
+      ></navL>
     </navigasi>
     <splash class="splash" style="max-width: 100%; max-height: 100%">
       <p
@@ -466,7 +489,11 @@
       homebt.hidden = true;
       const backbt = document.querySelector(".pBack");
       backbt.hidden = true;
-      var posisi;
+      const rightbt = document.querySelector(".pRight");
+      rightbt.hidden = true;
+      const leftbt = document.querySelector(".pLeft");
+      leftbt.hidden = true;
+      var posisi, pnav;
 
       const tujuanbt = document.querySelector(".pTujuan");
       const simulasibt = document.querySelector(".pSimulasi");
@@ -541,11 +568,15 @@
 
           homebt.hidden = true;
           backbt.hidden = true;
+          leftbt.hidden = true;
+          rightbt.hidden = true;
 
           document.body.style.backgroundImage = "url('images/home-bg1.png')";
         });
         backbt.addEventListener("click", function () {
           materipage.hidden = false;
+          leftbt.hidden = true;
+          rightbt.hidden = true;
 
           // if posisi ayok ayok
           if (posisi == "pmateri") {
@@ -574,6 +605,57 @@
             backbt.hidden = true;
             document.body.style.backgroundImage = "url('images/pageQuiz.png')";
           }
+        });
+
+        rightbt.addEventListener("click", function () {
+          if (pnav == 1) {
+            leftbt.hidden = false;
+            document.body.style.backgroundImage = "url('images/pE12.png')";
+          }
+          if (pnav == 2) {
+            rightbt.hidden = true;
+            document.body.style.backgroundImage = "url('images/pE13.png')";
+          }
+          if (pnav == 10) {
+            leftbt.hidden = false;
+            document.body.style.backgroundImage = "url('images/pE32.png')";
+          }
+          if (pnav == 11) {
+            rightbt.hidden = true;
+            document.body.style.backgroundImage = "url('images/pE33.png')";
+          }
+          if (pnav == 20) {
+            rightbt.hidden = true;
+            leftbt.hidden = false;
+            document.body.style.backgroundImage =
+              "url('images/pageInformasiLagi.png')";
+          }
+          pnav = pnav + 1;
+        });
+        leftbt.addEventListener("click", function () {
+          if (pnav == 2) {
+            leftbt.hidden = true;
+            document.body.style.backgroundImage = "url('images/pE11.png')";
+          }
+          if (pnav == 3) {
+            rightbt.hidden = false;
+            document.body.style.backgroundImage = "url('images/pE12.png')";
+          }
+          if (pnav == 11) {
+            leftbt.hidden = true;
+            document.body.style.backgroundImage = "url('images/pE31.png')";
+          }
+          if (pnav == 12) {
+            rightbt.hidden = false;
+            document.body.style.backgroundImage = "url('images/pE32.png')";
+          }
+          if (pnav == 21) {
+            leftbt.hidden = true;
+            rightbt.hidden = false;
+            document.body.style.backgroundImage =
+              "url('images/pageInformasi.png')";
+          }
+          pnav = pnav - 1;
         });
 
         tujuanbt.addEventListener("click", function () {
@@ -624,6 +706,9 @@
           informasipage.hidden = false;
           homebt.hidden = false;
 
+          rightbt.hidden = false;
+          pnav = 20;
+
           document.body.style.backgroundImage =
             "url('images/pageInformasi.png')";
         });
@@ -640,7 +725,9 @@
         });
         bumi1bt.addEventListener("click", function () {
           posisi = "pbumi";
+          pnav = 1;
           mbumi.hidden = true;
+          rightbt.hidden = false;
 
           document.body.style.backgroundImage = "url('images/pE11.png')";
         });
@@ -652,7 +739,9 @@
         });
         bumi3bt.addEventListener("click", function () {
           posisi = "pbumi";
+          pnav = 10;
           mbumi.hidden = true;
+          rightbt.hidden = false;
 
           document.body.style.backgroundImage = "url('images/pE31.png')";
         });
