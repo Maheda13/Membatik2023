@@ -52,6 +52,25 @@
         left: 50%;
         transform: translate(-50%, -55%);
       }
+      .layarQuiz {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-65%, -50%);
+      }
+
+      .layarsim1 {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-65%, -50%);
+      }
+      .layarsim2 {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-65%, -50%);
+      }
       m1 {
         position: fixed; /* or absolute */
         top: 19vh;
@@ -84,6 +103,11 @@
       }
 
       .pHome {
+        position: fixed; /* or absolute */
+        top: 14vh;
+        left: 84vw;
+      }
+      .pHomeQ {
         position: fixed; /* or absolute */
         top: 14vh;
         left: 84vw;
@@ -232,25 +256,7 @@
         <button class="js-toggle-fullscreen-btn toggle-fullscreen-btn">
           <img height="150rem" src="images/openinglogo.png" /></button
       ></logo>
-      <!-- <button
-        class="js-toggle-fullscreen-btn toggle-fullscreen-btn"
-        aria-label="Enter fullscreen mode"
-        hidden
-      >
-        <svg
-          class="toggle-fullscreen-svg"
-          width="28"
-          height="28"
-          viewBox="-2 -2 28 28"
-        >
-          <g class="icon-fullscreen-enter">
-            <path d="M 2 9 v -7 h 7" />
-            <path d="M 22 9 v -7 h -7" />
-            <path d="M 22 15 v 7 h -7" />
-            <path d="M 2 15 v 7 h 7" />
-          </g>
-        </svg>
-      </button> -->
+
       <iframe
         class="videobumper"
         width="60%"
@@ -393,26 +399,15 @@
         <button class="pQuiz1">
           <img class="mButton" src="images/btStart.png" /></button
       ></start>
-      <quiziz class="layarQuiz" style="z-index: -100">
-        <div
-          style="
-            margin-top: 7%;
-            margin-left: 10%;
-            width: 65%;
-            display: flex;
-            min-height: 75vh;
-            max-height: 75vh;
-          "
-        >
-          <iframe
-            src="https://quizizz.com/embed/quiz/6505ef23598d1f1610c694a5"
-            title="Earth and Moon Quiz - Quizizz"
-            style="flex: 1"
-            frameborder="0"
-          ></iframe
-          ><a></a>
-        </div>
-      </quiziz>
+      <quiz2 class="quiz2page">
+        <iframe
+          class="layarQuiz"
+          width="65%"
+          height="70%"
+          src="https://quizizz.com/embed/quiz/6505ef23598d1f1610c694a5"
+          title="Earth and Moon Quiz - Quizizz"
+        ></iframe>
+      </quiz2>
     </quiz>
     <simulasi class="simulasipage">
       <simulasi1 style="position: fixed; top: 35vh; left: 28vw">
@@ -422,17 +417,57 @@
             id="idSim1"
             src="images/btSimulasi1.png"
             alt="btSim1"
-          /></button
-      ></simulasi1>
+          />
+        </button>
+        <sim1 class="layarsim1">
+          <object
+            classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+            width="84%"
+            height="68%"
+          >
+            <param name="movie" value="lunarapplet.swf" />
+            <!--[if !IE]>--><object
+              type="application/x-shockwave-flash"
+              data="lunarapplet.swf"
+              width="840"
+              height="680"
+            >
+              <!--<![endif]-->
+              <p>flash animation</p>
+              <!--[if !IE]>--></object
+            ><!--<![endif]-->
+          </object>
+        </sim1>
+      </simulasi1>
       <simulasi2 style="position: fixed; top: 47vh; left: 50vw">
-        <button class="psim2">
+        <button class="pSim2">
           <img
             class="cSim2"
             id="idSim2"
             src="images/btSimulasi2.png"
             alt="btSim2"
-          /></button
-      ></simulasi2>
+          />
+        </button>
+        <sim2 class="layarsim2">
+          <object
+            classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+            width="97%"
+            height="71%"
+          >
+            <param name="movie" value="eclipticsimulator.swf" />
+            <!--[if !IE]>--><object
+              type="application/x-shockwave-flash"
+              data="eclipticsimulator.swf"
+              width="970"
+              height="710"
+            >
+              <!--<![endif]-->
+              <p>flash animation</p>
+              <!--[if !IE]>--></object
+            ><!--<![endif]-->
+          </object>
+        </sim2>
+      </simulasi2>
     </simulasi>
     <informasi class="informasipage"> </informasi>
     <petunjuk class="petunjukpage"></petunjuk>
@@ -454,6 +489,7 @@
       const simulasipage = document.querySelector(".simulasipage");
       const petunjukpage = document.querySelector(".petunjukpage");
       const informasipage = document.querySelector(".informasipage");
+      const quiz2page = document.querySelector(".quiz2page");
 
       // hidden all pages
       homepage.hidden = true;
@@ -463,6 +499,7 @@
       simulasipage.hidden = true;
       petunjukpage.hidden = true;
       informasipage.hidden = true;
+      quiz2page.hidden = true;
 
       const bumibt = document.querySelector(".pBumi");
       const mbumi = document.querySelector(".bumimenu");
@@ -478,12 +515,21 @@
       const startbt = document.querySelector(".pQuiz1");
       const fquiz = document.querySelector(".layarQuiz");
 
+      const sim1bt = document.querySelector(".pSim1");
+      const sim2bt = document.querySelector(".pSim2");
+      const fsim1 = document.querySelector(".layarsim1");
+      const fsim2 = document.querySelector(".layarsim2");
+
       mbumi.hidden = true;
       mbulan.hidden = true;
       bumibt.hidden = true;
       bulanbt.hidden = true;
       startbt.hidden = true;
       fquiz.hidden = true;
+      sim1bt.hidden = true;
+      sim2bt.hidden = true;
+      fsim1.hidden = true;
+      fsim2.hidden = true;
 
       const homebt = document.querySelector(".pHome");
       homebt.hidden = true;
@@ -504,15 +550,6 @@
 
       // Fullscreen
       if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
-        styleEl.setAttribute("rel", "stylesheet");
-        styleEl.setAttribute(
-          "href",
-          "https://codepen.io/tiggr/pen/poJoLyW.css"
-        );
-        styleEl.addEventListener("load", function () {
-          toggleBtn.hidden = false;
-        });
-        document.head.appendChild(styleEl);
         lanjut.hidden = true;
         bumper.hidden = true;
 
@@ -562,6 +599,8 @@
           tujuanpage.hidden = true;
           materipage.hidden = true;
           quizpage.hidden = true;
+          quiz2page.hidden = true;
+
           simulasipage.hidden = true;
           petunjukpage.hidden = true;
           informasipage.hidden = true;
@@ -577,6 +616,7 @@
           materipage.hidden = false;
           leftbt.hidden = true;
           rightbt.hidden = true;
+          quiz2page.hidden = true;
 
           // if posisi ayok ayok
           if (posisi == "pmateri") {
@@ -604,6 +644,15 @@
             startbt.hidden = false;
             backbt.hidden = true;
             document.body.style.backgroundImage = "url('images/pageQuiz.png')";
+          }
+          if (posisi == "psim1") {
+            sim1bt.hidden = false;
+            sim2bt.hidden = false;
+            fsim1.hidden = true;
+            fsim2.hidden = true;
+            backbt.hidden = true;
+            document.body.style.backgroundImage =
+              "url('images/pageSimulasi.png')";
           }
         });
 
@@ -689,6 +738,8 @@
           homepage.hidden = true;
           simulasipage.hidden = false;
           homebt.hidden = false;
+          sim1bt.hidden = false;
+          sim2bt.hidden = false;
 
           document.body.style.backgroundImage =
             "url('images/pageSimulasi.png')";
@@ -778,12 +829,39 @@
         startbt.addEventListener("click", function () {
           posisi = "pquiz1";
           startbt.hidden = true;
-          homebt.hidden = false;
           backbt.hidden = false;
           fquiz.hidden = false;
+          quiz2page.hidden = false;
 
           document.body.style.backgroundImage = "url('images/pageQuiz1.png')";
         });
+        sim1bt.addEventListener("click", function () {
+          posisi = "psim1";
+          sim1bt.hidden = true;
+          sim2bt.hidden = true;
+          backbt.hidden = false;
+
+          fsim1.hidden = false;
+
+          document.body.style.backgroundImage =
+            "url('images/pageSimulasi1.png')";
+        });
+        sim2bt.addEventListener("click", function () {
+          posisi = "psim1";
+          sim1bt.hidden = true;
+          sim2bt.hidden = true;
+          backbt.hidden = false;
+
+          fsim2.hidden = false;
+
+          document.body.style.backgroundImage =
+            "url('images/pageSimulasi1.png')";
+        });
+
+        //navigasi simulasi
+      } else {
+        tutup.hidden = false;
+        toggleBtn.hidden = false;
       }
     </script>
   </body>
