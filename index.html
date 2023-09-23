@@ -60,16 +60,17 @@
       }
 
       .layarsim1 {
+        z-index: -100;
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-65%, -50%);
+        transform: translate(-55%, -50%);
       }
       .layarsim2 {
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-65%, -50%);
+        transform: translate(-55%, -50%);
       }
       m1 {
         position: fixed; /* or absolute */
@@ -105,17 +106,13 @@
       .pHome {
         position: fixed; /* or absolute */
         top: 14vh;
-        left: 84vw;
+        left: 85vw;
       }
-      .pHomeQ {
-        position: fixed; /* or absolute */
-        top: 14vh;
-        left: 84vw;
-      }
+
       .pBack {
         position: fixed; /* or absolute */
         top: 14vh;
-        left: 77vw;
+        left: 78vw;
       }
 
       navR {
@@ -419,24 +416,14 @@
             alt="btSim1"
           />
         </button>
-        <sim1 class="layarsim1">
-          <object
-            classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-            width="84%"
-            height="68%"
+        <sim1>
+          <iframe
+            class="layarsim1"
+            width="78%"
+            height="78%"
+            src="https://ccnmtl.github.io/astro-simulations/lunar-phase-simulator/"
           >
-            <param name="movie" value="lunarapplet.swf" />
-            <!--[if !IE]>--><object
-              type="application/x-shockwave-flash"
-              data="lunarapplet.swf"
-              width="840"
-              height="680"
-            >
-              <!--<![endif]-->
-              <p>flash animation</p>
-              <!--[if !IE]>--></object
-            ><!--<![endif]-->
-          </object>
+          </iframe>
         </sim1>
       </simulasi1>
       <simulasi2 style="position: fixed; top: 47vh; left: 50vw">
@@ -448,24 +435,14 @@
             alt="btSim2"
           />
         </button>
-        <sim2 class="layarsim2">
-          <object
-            classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-            width="97%"
-            height="71%"
+        <sim2>
+          <iframe
+            class="layarsim2"
+            width="78%"
+            height="78%"
+            src="http://astro.unl.edu/classaction/animations/coordsmotion/eclipticsimulator.html"
           >
-            <param name="movie" value="eclipticsimulator.swf" />
-            <!--[if !IE]>--><object
-              type="application/x-shockwave-flash"
-              data="eclipticsimulator.swf"
-              width="970"
-              height="710"
-            >
-              <!--<![endif]-->
-              <p>flash animation</p>
-              <!--[if !IE]>--></object
-            ><!--<![endif]-->
-          </object>
+          </iframe>
         </sim2>
       </simulasi2>
     </simulasi>
@@ -609,6 +586,8 @@
           backbt.hidden = true;
           leftbt.hidden = true;
           rightbt.hidden = true;
+          fsim1.hidden = true;
+          fsim2.hidden = true;
 
           document.body.style.backgroundImage = "url('images/home-bg1.png')";
         });
